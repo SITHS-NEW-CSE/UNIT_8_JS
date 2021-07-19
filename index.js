@@ -25,9 +25,9 @@ function doSomething() {
 }
 console.log(x);
 console.log(y);
-// these will print `undefined` because the variables are defined within the function
-// x can be used anywhere within doSomething() but cannot be used outside of it
-// ** x exists in the function scope of doSomething(), but is undefined at the global scope **
+// these will print `undefined` because the variables are defined within the function.
+// x and y can be used anywhere within doSomething() but cannot be used outside of it
+// ** x, y exist in the function scope of doSomething(), but is undefined at the global scope **
 
 function anotherFunction() {
     var z = "works?";
