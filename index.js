@@ -1,28 +1,39 @@
-// Part of programming is making sure you *don't repeat yourself* (DRY)
-// DRY code is faster to implement and leaves less room for bugs
-// defining and calling functions in JS helps you do this
+// === Nested Functions ===
+// JS lets you define functions within functions, otherwise known as nesting
 
-// JS functions
-
-// test();      // you can call the function before defining it (not recommended)
-function test() {
-    console.log("This is a test");
-} // declare the function
-test(); // call the function
-
-function argument(student) {
-    // accepts an argument in the parentheses
-    console.log(`This is my student ${student}`);
+function doA() {
+    function doB() {
+        console.log("doB() executed");
+    }
+    // execute doB() twice
+    doB();
+    doB();
+    console.log("doA() executed");
 }
-argument("Claire");
-argument(8); // not type specific
+doA();
 
-function add(x, y) {
-    // x + y;  // do not do this! will give you `undefined`
-    return x + y;
-    // use return if you want to get the value computed in a function
-    // outside of the function scope
+// however, because doB() only exists inside doA(), we cannot call doB() outside of doA()
+doB(); // will result in an error (comment out this line after observing)
+
+// This phenomenon is called "scoping"
+
+// === Scopes in JS ===
+// Here's a simple example of how scopes work:
+function doSomething() {
+    let x = "a variable";
+    const y = ":)";
 }
-console.log(add(7, 9));
-const answer = add(7, 9); // able to assign function output to variable
-console.log(answer);
+console.log(x);
+console.log(y);
+// these will print `undefined` because the variables are defined within the function
+// x can be used anywhere within doSomething() but cannot be used outside of it
+// ** x exists in the function scope of doSomething(), but is undefined at the global scope **
+
+function anotherFunction() {
+    var z = "works?";
+    a = "hello";
+}
+console.log(z);
+console.log(a);
+// however, using `var` or no keywords when declaring variables within functions will work
+// outside of its function scope. This is MESSY AND UNSAFE; stick to 'let' and 'const'
