@@ -11,3 +11,4 @@ let variable3; //we can define later OR REDEFINE
 variable = "nope";
 console.log(variable);
 const constant = "constant"; //cannot redefine
+//constant = "ibnosaaoibnqwdnp";
